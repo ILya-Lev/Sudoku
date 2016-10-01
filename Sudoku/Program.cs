@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sudoku.DataLoader;
+using Sudoku.Model;
+using System;
 
 namespace Sudoku
 {
@@ -10,6 +8,17 @@ namespace Sudoku
 	{
 		static void Main (string[] args)
 		{
+			var numbers = FileLoader.LoadFromFile("field.txt");
+			var field = new Field(numbers);
+
+			field.Print();
+
+			var isSolved = field.Solve();
+
+			field.Print();
+
+			Console.WriteLine($"the field is solved? {isSolved} ");
+
 		}
 	}
 }

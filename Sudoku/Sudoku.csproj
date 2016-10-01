@@ -45,9 +45,24 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SudokuPrinter.cs" />
+    <Compile Include="SudokuSolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sudoku.DataLoader\Sudoku.DataLoader.csproj">
+      <Project>{D455ED97-3B8B-4CAD-BA24-8AE7008A26B7}</Project>
+      <Name>Sudoku.DataLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sudoku.Model\Sudoku.Model.csproj">
+      <Project>{FA440B54-DF13-48CA-822D-2816A4F5DE6E}</Project>
+      <Name>Sudoku.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="field.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

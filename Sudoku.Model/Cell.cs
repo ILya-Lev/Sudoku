@@ -7,11 +7,11 @@ namespace Sudoku.Model
 	{
 		private int _value;
 
-		#region location
-		public int Row { get; set; }
-		public int Column { get; set; }
-		public int Square { get; set; }
-		#endregion location
+		//#region location
+		//public int Row { get; set; }
+		//public int Column { get; set; }
+		//public int Square { get; set; }
+		//#endregion location
 
 		public int Value
 		{
@@ -25,5 +25,10 @@ namespace Sudoku.Model
 
 		public bool IsEmpty => Value == 0;
 		public List<int> PossibleValues { get; set; } = new List<int>();
+
+		public override string ToString ()
+		{
+			return Value.ToString();
+		}
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sudoku.Model
+namespace Sudoku.Model.Structures
 {
 	public abstract class Structure
 	{
@@ -28,8 +28,14 @@ namespace Sudoku.Model
 		{
 			foreach (Cell cell in Cells.Where(c => c.IsEmpty))
 			{
-				cell.PossibleValues = cell.PossibleValues.Except(pendingValues).ToList();
+				//if (cell.PossibleValues.Count == 0)
+				//	cell.PossibleValues = pendingValues;
+				//else
+				cell.PossibleValues = pendingValues.Union(cell.PossibleValues).ToList();
 			}
 		}
+
+		public bool IsFilled () => Cells.All(c => c.IsEmpty == false);
+		public int FilledCount () => Cells.Count(c => c.IsEmpty == false);
 	}
 }

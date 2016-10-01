@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Sudoku.DataLoader
 {
-	public class FileLoader
+	public static class FileLoader
 	{
-		private List<int> LoadFromFile (string fileName)
+		public static List<int> LoadFromFile (string fileName)
 		{
 			var allText = File.ReadAllText(fileName, Encoding.ASCII);
 
