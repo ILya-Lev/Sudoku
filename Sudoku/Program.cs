@@ -17,7 +17,10 @@ namespace Sudoku
 
 			field.Print();
 
-			Console.WriteLine($"the field is solved in {stepsNumber} steps");
+			if (stepsNumber == null)
+				Console.WriteLine("the field has not been solved");
+			else
+				Console.WriteLine($"the field has been solved in {stepsNumber} steps");
 		}
 	}
 }
