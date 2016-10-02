@@ -13,12 +13,11 @@ namespace Sudoku
 
 			field.Print();
 
-			var isSolved = field.Solve();
+			var stepsNumber = field.Solve();
 
 			field.Print();
 
-			Console.WriteLine($"the field is solved? {isSolved} ");
-
+			Console.WriteLine($"the field is solved in {stepsNumber} steps");
 		}
 	}
 }

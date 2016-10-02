@@ -6,7 +6,7 @@ namespace Sudoku.Model.Structures
 {
 	public class Square : Structure
 	{
-		public Square (List<int> field, int index) : base(field, index)
+		public Square (IReadOnlyList<Cell> field, int index) : base(field, index)
 		{
 			var startRow = Index / 3 * 3;
 			var startColumn = Index % 3 * 3;
@@ -17,7 +17,6 @@ namespace Sudoku.Model.Structures
 													   && startColumn <= c && c < finishColumn;
 
 			var cells = field.Where((n, idx) => isInRange(idx / Constants.LENGTH, idx % Constants.LENGTH))
-							.Select(n => new Cell { Value = n })
 							.ToArray();
 
 			cells.CopyTo(Cells, 0);

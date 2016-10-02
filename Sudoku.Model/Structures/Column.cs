@@ -5,12 +5,9 @@ namespace Sudoku.Model.Structures
 {
 	public class Column : Structure
 	{
-		public Column (List<int> field, int index) : base(field, index)
+		public Column (IReadOnlyList<Cell> field, int index) : base(field, index)
 		{
-			var cells = field.Where((n, idx) => idx % Constants.LENGTH == Index)
-				.Select(n => new Cell { Value = n })
-				.ToArray();
-
+			var cells = field.Where((c, idx) => idx % Constants.LENGTH == Index).ToArray();
 			cells.CopyTo(Cells, 0);
 		}
 	}

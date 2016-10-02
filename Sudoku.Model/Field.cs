@@ -6,20 +6,23 @@ namespace Sudoku.Model
 {
 	public class Field
 	{
+		private IReadOnlyList<Cell> _cells;
 		public Row[] Rows { get; }
 		public Column[] Columns { get; }
 		public Square[] Squares { get; }
 
 		public Field (List<int> field)
 		{
+			_cells = field.Select(n => new Cell { Value = n }).ToList();
+
 			var rows = new List<Row>();
 			var columns = new List<Column>();
 			var squares = new List<Square>();
 			for (int i = 0; i < Constants.LENGTH; i++)
 			{
-				rows.Add(new Row(field, i));
-				columns.Add(new Column(field, i));
-				squares.Add(new Square(field, i));
+				rows.Add(new Row(_cells, i));
+				columns.Add(new Column(_cells, i));
+				squares.Add(new Square(_cells, i));
 			}
 
 			Rows = rows.ToArray();

@@ -7,6 +7,7 @@ namespace Sudoku
 	{
 		public static void Print (this Field field)
 		{
+			Console.WriteLine("------------------------------------------------------------------------");
 			for (int i = 0; i < field.Rows.Length; i++)
 			{
 				var row = field.Rows[i];
@@ -19,6 +20,7 @@ namespace Sudoku
 				Console.WriteLine();
 				if (i % 3 == 2) Console.WriteLine();
 			}
+			Console.WriteLine("========================================================================");
 		}
 	}
 }
