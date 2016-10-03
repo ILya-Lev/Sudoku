@@ -4,7 +4,7 @@ namespace Sudoku
 {
 	public static class SudokuSolver
 	{
-		public static int? Solve (this Field field)
+		public static int Solve (this Field field)
 		{
 			// to avoid infinite loop and keep the logic initially
 			// after action is 1 > than before action, which is 0 
@@ -27,7 +27,7 @@ namespace Sudoku
 				field.Print();
 			}
 
-			return field.IsFilled() ? steps : default(int?);
+			return steps;
 		}
 	}
 }
