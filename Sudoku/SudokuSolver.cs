@@ -13,9 +13,17 @@ namespace Sudoku
 			while (filledAfterAction > filledBeforeAction && !field.IsFilled())
 			{
 				steps++;
+
 				filledBeforeAction = field.FilledAmount();
 				field.Replicate();
 				filledAfterAction = field.FilledAmount();
+
+				if (filledBeforeAction == filledAfterAction)
+				{
+					field.MatchSinglePendingNumber();
+					filledAfterAction = field.FilledAmount();
+				}
+
 				field.Print();
 			}
 

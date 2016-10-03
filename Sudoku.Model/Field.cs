@@ -1,4 +1,5 @@
 ﻿using Sudoku.Model.Structures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,13 +35,23 @@ namespace Sudoku.Model
 
 		public int FilledAmount () => Rows.Sum(r => r.FilledCount());
 
-		public void Replicate ()
+		public void Replicate () => RunActionOverAllStructures(s => s.ReplicateSelf());
+		public void MatchPendingPair () => RunActionOverAllStructures(s => s.Match2PendingValues());
+
+		private void RunActionOverAllStructures (Action<Structure> action)
+		{
+			Rows.ToList().ForEach(action);
+			Columns.ToList().ForEach(action);
+			Squares.ToList().ForEach(action);
+		}
+
+		public void MatchSinglePendingNumber ()
 		{
 			for (int i = 0; i < Constants.LENGTH; i++)
 			{
-				Rows[i].ReplicateSelf();
-				Columns[i].ReplicateSelf();
-				Squares[i].ReplicateSelf();
+				if (Rows[i].MatchSinglePendingNumber()) break;
+				if (Columns[i].MatchSinglePendingNumber()) break;
+				if (Squares[i].MatchSinglePendingNumber()) break;
 			}
 		}
 	}
